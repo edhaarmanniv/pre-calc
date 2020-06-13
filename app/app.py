@@ -1,10 +1,12 @@
 from flask import Flask
+import time
 
 app = Flask(__name__)
 
-@.app.route('/')
+@app.route('/time')
 def index():
-    # return render_template()
+    # return("test")
+    return {'time': time.time()}
 
 if __name__ == "__main__":
     index()
