@@ -55,7 +55,10 @@ class Question:
     def display_abc(self, coeffs):
         return r"y=({a})x^2+({b})x+({c})".format(**coeffs)
     
-    def display_hk(self, a, h, k):
+    def display_hk(self, coeffs):
+        h = self.find_h(coeffs)
+        k = self.find_k(coeffs)
+        a = coeffs["a"]
         return fr"y={a}(x-({h}))^2+({k})"
     
     def create_all_options_abc(self):
@@ -73,10 +76,25 @@ class Question:
     
     def create_all_options_hk(self):
         
-        for option, coeffs in self.all_choices_abc.items():
+        for option, coeffs in self.create_all_options_abc().items():
             h = self.find_h(coeffs)
             k = self.find_k(coeffs)
-            self.all_choices_hk.update({option:{"h":h, "k":k, "correct":coeffs["correct"], "display_string":self.display_hk(coeffs["a"], h, k)}})
+            self.all_choices_hk.update({option:{"h":h, "k":k, "correct":coeffs["correct"], "display_string":self.display_hk(coeffs)}})
         
         return self.all_choices_hk
+
+    def create_question_abc(self):    
         
+        question = f"Re-write the following in standard h k form: {self.display_abc(self.correct_coeffs)}"
+        options = self.create_all_options_hk()
+
+        return {"question":question,
+        "options": options}
+
+    def create_question_hk(self):    
+        
+        question = f"Re-write the following in a b c form: {self.display_hk(self.correct_coeffs)}"
+        options = self.create_all_options_abc()
+
+        return {"question":question,
+        "options": options}

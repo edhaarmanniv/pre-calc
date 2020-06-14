@@ -10,6 +10,8 @@ from question import *
 CONN = "mongodb://localhost:27017"
 client = pymongo.MongoClient(CONN)
 db = client.mathQuestions
+db.abc_questions.drop()
+db.hk_questions.drop()
 
 arbitrary_id = {"_id":0}
 
@@ -23,8 +25,8 @@ def index():
 @app.route("/new_question")
 def new_question():
     q = Question()
-    db.abc_questions.update_one(arbitrary_id, {"$set":q.create_all_options_abc()}, upsert=True)
-    db.hk_questions.update_one(arbitrary_id, {"$set":q.create_all_options_hk()}, upsert=True)
+    db.abc_questions.update_one(arbitrary_id, {"$set":q.create_question_abc()}, upsert=True)
+    db.hk_questions.update_one(arbitrary_id, {"$set":q.create_question_hk()}, upsert=True)
     return jsonify("1")
 
 @app.route("/get_abc")
@@ -34,7 +36,7 @@ def get_abc_question():
 @app.route("/get_hk")
 def get_hk_question():
     return db.hk_questions.find_one(arbitrary_id)
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
-
