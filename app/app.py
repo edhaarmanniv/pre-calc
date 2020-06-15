@@ -5,9 +5,10 @@ import numpy as np
 import time
 import pymongo
 
-from question import *
+from .question import *
 
-CONN = "mongodb://edhaarmanniv:vE+uqbr%v1cK@ds351428.mlab.com:51428/heroku_kg2jwj21"
+
+CONN = "mongodb://localhost:27017"
 client = pymongo.MongoClient(CONN)
 db = client.mathQuestions
 db.abc_questions.drop()
@@ -26,7 +27,6 @@ def new_question():
     q = Question()
     db.abc_questions.update_one(arbitrary_id, {"$set":q.create_question_abc()}, upsert=True)
     db.hk_questions.update_one(arbitrary_id, {"$set":q.create_question_hk()}, upsert=True)
-    
     return redirect(choice(["/get_abc", "/get_hk"]))
 
 @app.route("/get_abc")
