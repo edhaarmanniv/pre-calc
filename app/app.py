@@ -5,7 +5,7 @@ import numpy as np
 import time
 import pymongo
 
-from question import *
+from .question import *
 
 CONN = "mongodb://localhost:27017"
 client = pymongo.MongoClient(CONN)
