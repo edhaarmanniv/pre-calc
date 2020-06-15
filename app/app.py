@@ -7,7 +7,7 @@ import pymongo
 
 from question import *
 
-CONN = "mongodb://localhost:27017"
+CONN = "mongodb://edhaarmanniv:vE+uqbr%v1cK@ds351428.mlab.com:51428/heroku_kg2jwj21"
 client = pymongo.MongoClient(CONN)
 db = client.mathQuestions
 db.abc_questions.drop()
