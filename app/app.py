@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, redirect
 from matplotlib import pyplot as plt
+from random import choice
 import numpy as np
 import time
 import pymongo
 
-# from plot import *
 from question import *
 
 CONN = "mongodb://localhost:27017"
@@ -17,17 +17,16 @@ arbitrary_id = {"_id":0}
 
 app = Flask(__name__)
 
-@app.route("/time")
+@app.route("/")
 def index():
-    # return("test")
-    return {"time": time.time()}
+    return redirect("/new_question")
 
 @app.route("/new_question")
 def new_question():
     q = Question()
     db.abc_questions.update_one(arbitrary_id, {"$set":q.create_question_abc()}, upsert=True)
     db.hk_questions.update_one(arbitrary_id, {"$set":q.create_question_hk()}, upsert=True)
-    return jsonify("1")
+    return redirect(choice(["/get_abc", "/get_hk"]))
 
 @app.route("/get_abc")
 def get_abc_question():
