@@ -17,10 +17,9 @@ arbitrary_id = {"_id":0}
 
 app = Flask(__name__)
 
-@app.route("/time")
+@app.route("/")
 def index():
-    # return("test")
-    return {"time": time.time()}
+    return redirect("/new_question")
 
 @app.route("/new_question")
 def new_question():
