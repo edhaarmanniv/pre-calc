@@ -9,8 +9,8 @@ from matplotlib import pyplot as plt
 
 from .question import *
 
-client = pymongo.MongoClient(os.getenv("CONN"))
-db = client.mathQuestions
+client = pymongo.MongoClient(os.getenv("MONGODB_URI"))
+db = client.get_database()
 db.abc_questions.drop()
 db.hk_questions.drop()
 
