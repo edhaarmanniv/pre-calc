@@ -1,4 +1,4 @@
-Deployed API found at the following link: [Pre-Calc API](https://pre-calc.herokuapp.com/)
+Deployed API found at the following link: [Pre-Calc API](https://pre-calc.herokuapp.com/)<br />
 Currently will return json with data for one of two different parabola conversions
 
 ## Available Scripts
@@ -16,6 +16,7 @@ You will also see any lint errors in the console.
 ### `npm start-app`
 
 Runs the Flask app in the development mode.<br />
+
 Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
 ### Advanced Configuration
