@@ -1,4 +1,5 @@
-Deployed API found at the following link: [https://pre-calc.herokuapp.com/](Pre-Calc API)
+Deployed API found at the following link: [Pre-Calc API](https://pre-calc.herokuapp.com/)
+Currently will return json with data for one of two different parabola conversions
 
 ## Available Scripts
 
