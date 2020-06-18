@@ -10,7 +10,6 @@ flask = "*"
 pymongo = "*"
 numpy = "*"
 matplotlib = "*"
-python-dotenv = "*"
 gunicorn = "*"
 
 [requires]
