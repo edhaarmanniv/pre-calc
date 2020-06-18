@@ -1,9 +1,11 @@
+import os
+import time
+from random import choice
+
+import numpy as np
+import pymongo
 from flask import Flask, jsonify, redirect
 from matplotlib import pyplot as plt
-from random import choice
-import numpy as np
-import time
-import pymongo
 
 from .question import *
 
