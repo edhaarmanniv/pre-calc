@@ -7,9 +7,7 @@ import pymongo
 
 from .question import *
 
-
-CONN = "mongodb://localhost:27017"
-client = pymongo.MongoClient(CONN)
+client = pymongo.MongoClient(os.getenv("CONN"))
 db = client.mathQuestions
 db.abc_questions.drop()
 db.hk_questions.drop()
